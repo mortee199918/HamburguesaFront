@@ -5,18 +5,18 @@ import Layout from "./Layout";
 
 import DetalleEvento from "../pages/DetalleEvento";
 import ListadoEventos from "../pages/ListasdoEventos";
-import RegistroUsuario from "../pages/RegistroUsuario";
+
 
 const Router = () => (
     <BrowserRouter>
         <Routes>
             <Route index element={<Login />} />
             <Route path="/Registro" element={<Registro />} />
-            <Layout>
+            <Route path="" element={<Layout/>}>
+            
                 <Route path="/listado" element={<ListadoEventos />} />
-                <Route path="/registro" element={<RegistroUsuario />} />
                 <Route path="/eventos/:id" element={<DetalleEvento />} />
-            </Layout>
+            </Route>
             <Route path="*" element={<div>404</div>} />
         </Routes>
     </BrowserRouter>
