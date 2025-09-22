@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
-function Layout({ children }) {
+function Layout() {
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,9 @@ function Layout({ children }) {
       </header>
 
       {/* CONTENIDO */}
-      <main className="flex-1 p-6">{children}</main>
+      {/*<main className="flex-1 p-6">{children}</main>*/}
+
+      <Outlet></Outlet>
 
       {/* FOOTER (opcional) */}
       <footer className="bg-gray-100 text-center p-3 text-sm text-gray-500">

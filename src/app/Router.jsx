@@ -4,7 +4,7 @@ import Registro from '../pages/Registro';
 import Layout from "./Layout";
 
 import DetalleEvento from "../pages/DetalleEvento";
-import ListadoEventos from "../pages/ListasdoEventos";
+import ListadoEventos from "../pages/ListadoEventos";
 
 
 const Router = () => (
@@ -12,8 +12,8 @@ const Router = () => (
         <Routes>
             <Route index element={<Login />} />
             <Route path="/Registro" element={<Registro />} />
-            <Route path="" element={<Layout/>}>
-            
+            <Route path="" element={<Layout />}>
+
                 <Route path="/listado" element={<ListadoEventos />} />
                 <Route path="/eventos/:id" element={<DetalleEvento />} />
             </Route>

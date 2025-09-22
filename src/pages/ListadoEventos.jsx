@@ -1,9 +1,46 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './ListadoEventos.css'; // 👈 Solo importas el CSS, sin "styles"
+import "./ListadoEventos.css";
 
 const ListadoEventos = () => {
-  // ... tu lógica
+  const [eventos, setEventos] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [lugar, setLugar] = useState("");
+  const navigate = useNavigate();
+
+  // Cargar eventos al montar componente
+  const cargarEventos = () => {
+    fetch("http://localhost:8080/api/eventos")
+      .then((res) => res.json())
+      .then((data) => setEventos(data))
+      .catch((err) => console.error("Error cargando eventos", err));
+  };
+
+  useEffect(() => {
+    cargarEventos();
+  }, []);
+
+  // Crear nuevo evento
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const nuevoEvento = { nombre, fecha, lugar, participantes: [] };
+
+    fetch("http://localhost:8080/api/eventos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nuevoEvento),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        cargarEventos(); // refrescar listado
+        setNombre("");
+        setFecha("");
+        setLugar("");
+      })
+      .catch((err) => console.error("Error al crear evento:", err));
+  };
 
   return (
     <div className="container"> {/* 👈 NO "styles.container" */}
