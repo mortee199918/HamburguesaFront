@@ -13,7 +13,7 @@ export const login = async (username, password) => {
     
     if(response.status === 200){
         await setAuth(token);
-        alert("Login exitoso!!")
+        // alert("Login exitoso!!")
     }else{
        return Promise.reject("invalid auth");
     }
@@ -34,3 +34,12 @@ export const register = async (username,password) =>{
     alert("Registro completo")
    }
 }
+
+export const saveUserName = async (obj) => await instance.post('/', obj)
+
+export const getUsers = async () => await instance.get();
+
+export const deleteUser = async (id) => await instance.delete('/' + id);
+
+export const updateUser = async (id, name) => await instance.put('/'+id, { nombre: name });
+

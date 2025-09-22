@@ -58,7 +58,7 @@ const Login = () => {
                         className="login-btn"
                         onClick={() => {
                             console.log(username, password);
-                            login(username, password).then(navigate("/listado"));
+                            login(username, password).then(()=>navigate("/listado"));
                         }}
                     >
                         Login
