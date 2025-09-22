@@ -1,0 +1,116 @@
+/* Login.css */
+
+.login-container {
+    background-color: #90EE90; /* lightgreen */
+    height: 100vh;
+}
+
+.login-card {
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.title-bar {
+    background-color: #E37807; /* naranja */
+    color: yellow;
+    border-radius: 22px;
+    padding: 15px;
+    margin: 0;
+    font-size: 24px;
+    width: 100%;
+}
+
+.spacer-yellow {
+    background-color: yellow;
+    height: 10px;
+    margin: 10px auto;
+    border-radius: 22px;
+    width: 100%;
+}
+
+.spacer-red {
+    background-color: #DB3C09; /* rojo oscuro */
+    height: 10px;
+    margin: 10px auto;
+    border-radius: 22px;
+    width: 100%;
+}
+
+.spacer-brown {
+    background-color: saddlebrown;
+    height: 10px;
+    margin: 10px auto;
+    border-radius: 22px;
+    width: 100%;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    margin: 10px auto;
+    width: 100%;
+    height: 40px;
+}
+
+.input-wrapper.limegreen {
+    background-color: limegreen;
+}
+
+.input-wrapper.yellowgold {
+    background-color: #E5BC07;
+}
+
+.login-input {
+    width: 200px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E37807;
+    color: white;
+    border-radius: 22px;
+    padding: 10px 20px;
+    margin: 10px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-btn,
+.register-link {
+    background-color: white;
+    color: #E37807;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.login-btn:hover,
+.register-link:hover {
+    opacity: 0.9;
+}
+
+.login-btn {
+    margin-right: 10px;
+}
+
+.register-link {
+    margin-left: 10px;
+}

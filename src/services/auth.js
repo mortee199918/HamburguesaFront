@@ -14,6 +14,8 @@ export const login = async (username, password) => {
     if(response.status === 200){
         await setAuth(token);
         alert("Login exitoso!!")
+    }else{
+       return Promise.reject("invalid auth");
     }
 };
 

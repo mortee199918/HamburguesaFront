@@ -1,177 +1,70 @@
 
-import { Link } from 'react-router-dom'; // Importamos Link para navegar
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Login.css'; // Importamos nuestro CSS personalizado
 import { useState } from 'react';
 import { login } from '../services/auth';
 
 const Login = () => {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
     return (
-        <div className="container-fluid d-flex justify-content-center align-items-center" style={{ height: '100vh', backgroundColor: '#90EE90' }}>
-            <div style={{ width: '500px', textAlign: 'center', margin: 'auto' }}>
+        <div className="container-fluid d-flex justify-content-center align-items-center login-container">
+            <div className="login-card">
                 {/* Título */}
-                <h1
-                    style={{
-                        backgroundColor: '#E37807',
-                        color: 'yellow',
-                        borderRadius: '22px',
-                        padding: '15px',
-                        margin: '0',
-                        width: '500px',
-                        fontSize: '24px'
-                    }}
-                >
+                <h1 className="title-bar">
                     Bienvenido a la noche de hamburguesas porfavor registrate
                 </h1>
 
                 {/* Espaciador amarillo */}
-                <div style={{
-                    backgroundColor: 'yellow',
-                    color: 'yellow',
-                    borderRadius: '22px',
-                    height: '10px',
-                    margin: '10px auto',
-                    width: '500px'
-                }}></div>
+                <div className="spacer-yellow"></div>
 
                 {/* Espaciador rojo oscuro */}
-                <div style={{
-                    backgroundColor: '#DB3C09',
-                    color: '#DB3C09',
-                    borderRadius: '22px',
-                    height: '10px',
-                    margin: '10px auto',
-                    width: '500px'
-                }}></div>
+                <div className="spacer-red"></div>
 
                 {/* Input username */}
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'limegreen',
-                    color: 'limegreen',
-                    borderRadius: '22px',
-                    margin: '10px auto',
-                    width: '500px',
-                    height: '40px'
-                }}>
+                <div className="input-wrapper limegreen">
                     <input
                         type="text"
                         placeholder="username"
-                        style={{
-                            width: '200px',
-                            height: '30px',
-                            border: 'none',
-                            borderRadius: '5px',
-                            padding: '5px',
-                            backgroundColor: 'white',
-                            fontSize: '16px',
-                            textAlign: 'center'
-                        }} onChange={(e) => setUsername(e.target.value)}
+                        className="login-input"
+                        onChange={(e) => setUsername(e.target.value)}
+                        value={username}
                     />
                 </div>
 
                 {/* Espaciador marrón oscuro */}
-                <div style={{
-                    backgroundColor: 'saddlebrown',
-                    color: 'saddlebrown',
-                    borderRadius: '22px',
-                    height: '10px',
-                    margin: '10px auto',
-                    width: '500px'
-                }}></div>
+                <div className="spacer-brown"></div>
 
                 {/* Input password */}
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: '#E5BC07',
-                    color: '#E5BC07',
-                    borderRadius: '22px',
-                    margin: '10px auto',
-                    width: '500px',
-                    height: '40px'
-                }}>
+                <div className="input-wrapper yellowgold">
                     <input
                         type="password"
                         placeholder="password"
-                        style={{
-                            width: '200px',
-                            height: '30px',
-                            border: 'none',
-                            borderRadius: '5px',
-                            padding: '5px',
-                            backgroundColor: 'white',
-                            fontSize: '16px',
-                            textAlign: 'center'
-                        }}onChange={(e) => setPassword(e.target.value)}
+                        className="login-input"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
                     />
                 </div>
 
                 {/* Espaciador marrón oscuro */}
-                <div style={{
-                    backgroundColor: 'saddlebrown',
-                    color: 'saddlebrown',
-                    borderRadius: '22px',
-                    height: '10px',
-                    margin: '10px auto',
-                    width: '500px'
-                }}></div>
+                <div className="spacer-brown"></div>
 
                 {/* Contenedor de Botón Login + Enlace Registro */}
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    backgroundColor: '#E37807',
-                    color: 'white',
-                    borderRadius: '22px',
-                    padding: '10px 20px',
-                    margin: '10px auto',
-                    width: '500px',
-                    boxSizing: 'border-box'
-                }}>
-                    {/* Botón Login */}
+                <div className="button-container">
                     <button
-                        style={{
-                            backgroundColor: 'white',
-                            color: '#E37807',
-                            border: 'none',
-                            borderRadius: '5px',
-                            padding: '8px 16px',
-                            cursor: 'pointer',
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            flex: 1,
-                            marginRight: '10px'
-                        }} onClick={()=>{
+                        className="login-btn"
+                        onClick={() => {
                             console.log(username, password);
-                            login(username,password);
+                            login(username, password).then(navigate("/listado"));
                         }}
                     >
                         Login
                     </button>
 
-                    {/* Enlace Registro */}
-                    <Link
-                        to="./Registro"
-                        style={{
-                            backgroundColor: 'white',
-                            color: '#E37807',
-                            border: 'none',
-                            borderRadius: '5px',
-                            padding: '8px 16px',
-                            textDecoration: 'none',
-                            fontSize: '16px',
-                            fontWeight: 'bold',
-                            textAlign: 'center',
-                            flex: 1,
-                            marginLeft: '10px'
-                        }}
-                    >
+                    <Link to="./Registro" className="register-link">
                         Registrarse
                     </Link>
                 </div>
