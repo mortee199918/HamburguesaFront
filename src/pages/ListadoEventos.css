@@ -1,0 +1,128 @@
+/* ListadoEventos.module.css */
+
+.container {
+  background-color: #90EE90;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.title-box {
+  background-color: #E37807;
+  color: yellow;
+  border-radius: 22px;
+  padding: 15px;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #DB3C09;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.divider-yellow {
+  background-color: yellow;
+  height: 5px;
+  margin: 15px auto;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.divider-brown {
+  background-color: saddlebrown;
+  height: 10px;
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.event-card {
+  background-color: #E5BC07;
+  border-radius: 22px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.participants-badge {
+  background-color: saddlebrown;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+.no-events-alert {
+  background-color: #DB3C09;
+  color: white;
+  border-radius: 22px;
+  padding: 15px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.form-box {
+  background-color: limegreen;
+  border-radius: 22px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-box h2 {
+  color: #E37807;
+  margin-bottom: 1.5rem;
+}
+
+.form-group-yellow {
+  background-color: #E5BC07;
+  padding: 10px;
+  border-radius: 22px;
+  margin-bottom: 1rem;
+}
+
+.form-group-green {
+  background-color: limegreen;
+  padding: 10px;
+  border-radius: 22px;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  background-color: white;
+  border: none;
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: #E37807;
+  color: yellow;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #DB3C09;
+}
