@@ -82,7 +82,7 @@ const ListadoEventos = () => {
           <i className="bi bi-plus-circle me-2"></i>
           Crear Nuevo Evento
         </h2>
-        <form onSubmit={handleSubmit}>
+        <form className="form-container" onSubmit={handleSubmit}>
           <div className="formGroupGreen">
             <input
               type="text"
@@ -117,7 +117,7 @@ const ListadoEventos = () => {
 
           <button
             type="submit"
-            className="submitBtn" // 👈 NO "styles.submitBtn"
+            className="submit-btn" // 👈 NO "styles.submitBtn"
           >
             <i className="bi bi-save me-2"></i>
             Guardar Evento
