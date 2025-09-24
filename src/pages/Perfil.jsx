@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../services/auth";
+import { getUser } from "../services/user";
 import UserInfo from "./UserInfo";
 
 const Perfil = () => {
       const [user,setUser]=useState();
-      const queryUser = ()=> getUsers().then(res=>setUser(res.data));
+      const queryUser = ()=> getUser(3).then(res=>setUser(res.data));
 
       useEffect(()=>{
         queryUser();

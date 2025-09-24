@@ -7,12 +7,15 @@ function Layout() {
     <div className="min-h-screen flex flex-col">
       {/* NAVBAR */}
       <header className="bg-blue-700 text-white p-4 flex justify-between items-center shadow">
+        <div className="container-fluid row">
         <h1
-          className="text-xl font-bold cursor-pointer"
+          className="text-xl font-bold cursor-pointer col-8"
           onClick={() => navigate("/")}
         >
           🍽️ Mis Eventos
         </h1>
+        <button className="col-2 offset-2 btn btn-success" onClick={() => navigate("/perfil")}>Perfil</button>
+        </div>
 
         <button
           onClick={() => navigate("/")}

@@ -7,12 +7,12 @@ import ListadoEventos from "../pages/ListadoEventos";
 import Perfil from '../pages/Perfil';
 
 
-const Router = () => (
+const Router = ({auth}) => (
     <BrowserRouter>
         <Routes>
             <Route index element={<Login />} />
             <Route path="/Registro" element={<Registro />} />
-            <Route path="" element={<Layout />}>
+            <Route path="" element={auth ? <Layout /> : <Login/>}>
 
                 <Route path="/listado" element={<ListadoEventos />} />
                 <Route path="/eventos/:id" element={<DetalleEvento />} />

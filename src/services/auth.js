@@ -1,3 +1,4 @@
+import { setToken } from '../providers/TokenProvider.js';
 import api from './api.js';
 export const login = async (username, password) => {
     console.log(username, password)
@@ -12,7 +13,7 @@ export const login = async (username, password) => {
     console.log(response);
     
     if(response.status === 200){
-        await setAuth(token);
+        await setToken(response.data);
         // alert("Login exitoso!!")
     }else{
        return Promise.reject("invalid auth");
@@ -20,7 +21,7 @@ export const login = async (username, password) => {
 };
 
 
-export const setAuth = async (token) => {
+export const setAuth = (token) => {
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -34,12 +35,4 @@ export const register = async (username,password) =>{
     alert("Registro completo")
    }
 }
-
-export const saveUserName = async (obj) => await instance.post('/', obj)
-
-export const getUsers = async () => await instance.get();
-
-export const deleteUser = async (id) => await instance.delete('/' + id);
-
-export const updateUser = async (id, name) => await instance.put('/'+id, { nombre: name });
 

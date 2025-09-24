@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ListadoEventos.css";
+import { createEvent, getEvents } from "../services/event";
 
 const ListadoEventos = () => {
   const [eventos, setEventos] = useState([]);
@@ -9,37 +10,16 @@ const ListadoEventos = () => {
   const [lugar, setLugar] = useState("");
   const navigate = useNavigate();
 
-  // Cargar eventos al montar componente
-  const cargarEventos = () => {
-    fetch("http://localhost:8080/api/eventos")
-      .then((res) => res.json())
-      .then((data) => setEventos(data))
-      .catch((err) => console.error("Error cargando eventos", err));
-  };
-
   useEffect(() => {
-    cargarEventos();
+    getEvents().then(setEventos);
+    
+    ;
   }, []);
 
   // Crear nuevo evento
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const nuevoEvento = { nombre, fecha, lugar, participantes: [] };
-
-    fetch("http://localhost:8080/api/eventos", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(nuevoEvento),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        cargarEventos(); // refrescar listado
-        setNombre("");
-        setFecha("");
-        setLugar("");
-      })
-      .catch((err) => console.error("Error al crear evento:", err));
+  const handleSubmit = () => {
+    createEvent({name: nombre, location: lugar, date: fecha })
+   
   };
 
   return (
@@ -58,10 +38,11 @@ const ListadoEventos = () => {
           eventos.map((evento) => (
             <div className="col d-flex" key={evento.id}>
               <div
-                className="eventCard" // 👈 NO "styles.eventCard"
-                onClick={() => navigate(`/eventos/${evento.id}`)}
+                className="eventCard" 
               >
-                {/* ... */}
+                <h2>{evento.name}</h2>
+                <h3>{new Date(evento.date).toLocaleDateString()}</h3>
+                <h3>{evento.location}</h3>
               </div>
             </div>
           ))
@@ -118,6 +99,7 @@ const ListadoEventos = () => {
           <button
             type="submit"
             className="submit-btn" // 👈 NO "styles.submitBtn"
+            onClick={()=>handleSubmit()}  
           >
             <i className="bi bi-save me-2"></i>
             Guardar Evento

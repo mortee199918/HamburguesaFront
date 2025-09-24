@@ -288,7 +288,7 @@ const Registro = () => {
         {/* Input Password */}
         <div className="input-container-yellow">
           <input
-            type="text"
+            type="password"
             placeholder="password"
             className="registro-input"
             onChange={(e) => setPassword(e.target.value)}
