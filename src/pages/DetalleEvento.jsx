@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import './DetalleEvento.css';
+import { getEventById } from "../services/event";
+import {addAssistantToEvent} from "../services/userEvent";
 
 const DetalleEvento = () => {
   const { id } = useParams();
@@ -8,10 +10,7 @@ const DetalleEvento = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/eventos/${id}`)
-      .then((res) => res.json())
-      .then((data) => setEvento(data))
-      .catch((err) => console.error("Error cargando evento", err));
+  getEventById(id).then(setEvento);
   }, [id]);
 
   if (!evento) {
@@ -23,6 +22,7 @@ const DetalleEvento = () => {
       </div>
     );
   }
+
 
   return (
     <div className="container">
@@ -36,10 +36,10 @@ const DetalleEvento = () => {
 
       {/* Tarjeta del evento */}
       <div className="event-card">
-        <h2 className="event-title">{evento.nombre}</h2>
+        <h2 className="event-title">{evento.name}</h2>
         <p className="event-info">
           <i className="bi bi-calendar-event"></i>
-          {new Date(evento.fecha).toLocaleDateString("es-ES")}
+          {new Date(evento.date).toLocaleDateString("es-ES")}
         </p>
         <p className="event-info">
           <i className="bi bi-geo-alt"></i>
@@ -47,7 +47,7 @@ const DetalleEvento = () => {
         </p>
         <p className="event-info">
           <i className="bi bi-people"></i>
-          <strong>{evento.participantes?.length || 0} participantes</strong>
+          <strong>{evento.assistsants?.length || 0} participantes</strong>
         </p>
       </div>
 
@@ -56,10 +56,10 @@ const DetalleEvento = () => {
       {/* Sección de participantes */}
       <div className="participants-section">
         <h3>👥 Participantes</h3>
-        {evento.participantes && evento.participantes.length > 0 ? (
-          evento.participantes.map((participante, index) => (
+        {evento.assistsants && evento.assistsants.length > 0 ? (
+          evento.assistsants.map((assistsant, index) => (
             <div key={index} className="participant-item">
-              {participante.nombre || `Participante ${index + 1}`}
+              {assistsant.user.username || `Participante ${index + 1}`}
             </div>
           ))
         ) : (
@@ -69,8 +69,9 @@ const DetalleEvento = () => {
 
       {/* Botones de acción */}
       <div className="btn-group">
-        <button className="btn-action">
-          <i className="bi bi-person-plus me-1"></i> Añadir Participante
+        <button className="btn-action" onClick={()=>{addAssistantToEvent(evento)
+        }}>
+          <i className="bi bi-person-plus me-1"></i> Unirse 
         </button>
         <button className="btn-action">
           <i className="bi bi-pencil me-1"></i> Editar Evento
@@ -84,7 +85,7 @@ const DetalleEvento = () => {
       <div className="text-center">
         <button
           className="back-link"
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/listado')}
         >
           ← Volver al Listado
         </button>

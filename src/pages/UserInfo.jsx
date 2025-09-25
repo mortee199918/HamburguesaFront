@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-const UserInfo = (u,queryUser) => {
+const UserInfo = ({u,queryUser}) => {
     const [user,setUser]=useState(u);
     const [editable,setEditable]=useState(false);
+    console.log(u);
+    
         
         { return editable ? 
          <>
@@ -14,7 +16,7 @@ const UserInfo = (u,queryUser) => {
         </>
         : 
         <>
-        <h1>{u.username}</h1><h2>{u.age}</h2><h3>{u.interests}</h3>
+        <h1>{user.username}</h1><h2>{user.age}</h2><h3>{user.interests}</h3>
         </> 
 }}
 

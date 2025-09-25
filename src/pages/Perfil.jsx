@@ -4,7 +4,7 @@ import UserInfo from "./UserInfo";
 
 const Perfil = () => {
       const [user,setUser]=useState();
-      const queryUser = ()=> getUser(3).then(res=>setUser(res));
+      const queryUser = ()=> getUser(3).then(setUser);
 
       useEffect(()=>{
         queryUser();
@@ -14,9 +14,8 @@ const Perfil = () => {
       
         <>
         <h1 style={{textAlign:"center",margin:"auto"}}>Perfil </h1>
-        {
-            user?.map((u)=>{return(<UserInfo u={u} queryUser={queryUser}   />)})
-        }
+           { user && <UserInfo u={user} queryUser={queryUser} />}
+        
         
            
         </>
