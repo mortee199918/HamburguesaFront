@@ -4,7 +4,7 @@ import UserInfo from "./UserInfo";
 
 const Perfil = () => {
       const [user,setUser]=useState();
-      const queryUser = ()=> getUser(3).then(res=>setUser(res.data));
+      const queryUser = ()=> getUser(3).then(res=>setUser(res));
 
       useEffect(()=>{
         queryUser();

@@ -30,7 +30,7 @@ export const test = () => {
 }
 
 export const register = async (username,password) =>{
-   response = await api.post("/auth/register",{username,password})
+ const  response = await api.post("/auth/register",{username,password})
    if (response.status === 200) {
     alert("Registro completo")
    }

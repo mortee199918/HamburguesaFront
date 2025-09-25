@@ -18,7 +18,7 @@ function Layout() {
         </div>
 
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/listado")}
           className="bg-gray-200 text-black px-3 py-1 rounded hover:bg-gray-300"
         >
           ⬅ Volver al listado

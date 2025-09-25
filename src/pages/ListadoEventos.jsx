@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ListadoEventos.css";
 import { createEvent, getEvents } from "../services/event";
 
@@ -8,7 +8,7 @@ const ListadoEventos = () => {
   const [nombre, setNombre] = useState("");
   const [fecha, setFecha] = useState("");
   const [lugar, setLugar] = useState("");
-  const navigate = useNavigate();
+  
 
   useEffect(() => {
     getEvents().then(setEventos);
@@ -40,7 +40,7 @@ const ListadoEventos = () => {
               <div
                 className="eventCard" 
               >
-                <h2>{evento.name}</h2>
+                <h2><Link to={"/eventos/"+evento.id}/>{evento.name}</h2>
                 <h3>{new Date(evento.date).toLocaleDateString()}</h3>
                 <h3>{evento.location}</h3>
               </div>
