@@ -38,9 +38,9 @@ const ListadoEventos = () => {
               <div
                 className="eventCard" 
               >
-                <h2><Link to={"/eventos/"+evento.id}/>{evento.name}</h2>
-                <h3>{new Date(evento.date).toLocaleDateString()}</h3>
-                <h3>{evento.location}</h3>
+                <h2 className="text-white"><Link to={"/eventos/"+evento.id}>{evento.name}</Link></h2>
+                <h3 className="text-white">{new Date(evento.date).toLocaleDateString()}</h3>
+                <h3 className="text-white">{evento.location}</h3>
               </div>
             </div>
           ))

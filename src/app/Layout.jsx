@@ -19,7 +19,7 @@ function Layout() {
 
         <button
           onClick={() => navigate("/listado")}
-          className="bg-gray-200 text-black px-3 py-1 rounded hover:bg-gray-300"
+          className="bg-gray-200 text-black px-3 py-1 rounded hover:bg-gray-300  btn btn-info"
         >
           ⬅ Volver al listado
         </button>

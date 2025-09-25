@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getUser } from "../services/user";
+import {  getUserFromToken } from "../services/user";
 import UserInfo from "./UserInfo";
 
 const Perfil = () => {
       const [user,setUser]=useState();
-      const queryUser = ()=> getUser(3).then(setUser);
+      const queryUser = ()=> getUserFromToken().then(setUser);
 
       useEffect(()=>{
         queryUser();
@@ -13,8 +13,9 @@ const Perfil = () => {
     return (
       
         <>
-        <h1 style={{textAlign:"center",margin:"auto"}}>Perfil </h1>
+        <h1 className="text-center text-white bg-success border-right">Perfil </h1>
            { user && <UserInfo u={user} queryUser={queryUser} />}
+           
         
         
            
