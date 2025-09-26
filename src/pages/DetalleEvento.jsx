@@ -77,6 +77,8 @@ const DetalleEvento = () => {
     }
   };
 
+  
+  
   return (
     <div className="container">
       <h1 className="header-box">
@@ -151,7 +153,7 @@ const DetalleEvento = () => {
       {/* Sección de participantes */}
       <div className="participants-section">
         <h3>👥 Participantes</h3>
-        {evento.assistants && evento.assistants.length > 0 ? (
+        {evento.assistants ? (
           evento.assistants.map((assistant, index) => (
             <div key={index} className="participant-item">
               {assistant.user?.username || `Participante ${index + 1}`}
@@ -168,7 +170,7 @@ const DetalleEvento = () => {
           <>
             <button
               className="btn-action"
-              onClick={() => addAssistantToEvent(evento.id)}
+             onClick={() => addAssistantToEvent(evento)}
             >
               <i className="bi bi-person-plus me-1"></i> Unirse
             </button>

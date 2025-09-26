@@ -1,5 +1,5 @@
 import api from './api.js';
-import { getToken } from '../providers/TokenProvider.js';
+import { getToken, removeToken } from '../providers/TokenProvider.js';
 
 
 export const login = async (username, password) => {
@@ -23,7 +23,7 @@ export const login = async (username, password) => {
 };
 
 
-export const setAuth = () => {
+export const setAuth = () => {  
     api.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 };
 
@@ -40,11 +40,12 @@ export const register = async (username,password) =>{
 }
 export const unsetToken = () => {
     api.defaults.headers.common.Authorization = null;
-    deleteToken();
+    removeToken();
 };
 export const validateToken = async () => {
    
     const res = await api.get("/auth/validate");
+    
     return res.data;
 };
 

@@ -1,4 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import { unsetToken } from "../services/auth";
 
 function Layout() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function Layout() {
           🍽️ Noche Hamburguesa 🍔
         </h1>
         <button className="col-2  btn btn-success m-2 " onClick={() => navigate("/perfil")}>Perfil</button>
-        <button className="col-2  btn btn-success m-2"> LOG OUT </button>
+        <button className="col-2  btn btn-success m-2" onClick={()=> {unsetToken();(navigate(""))}}> LOG OUT </button>
         </div>
 
         <button
