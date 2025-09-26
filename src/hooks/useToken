@@ -1,0 +1,18 @@
+import { useState } from "react";
+import { getToken, removeToken, saveToken } from "../providers/TokenProvider";
+
+const useToken = () => {
+    const [token, setToken] = useState(getToken());
+    const deleteToken = () => {
+        removeToken();
+        setToken(null); 
+    };
+    const addToken = (token) => {
+        saveToken(token);
+        setToken(token);
+    };
+
+    return { token, addToken, deleteToken };
+}
+
+export default useToken;

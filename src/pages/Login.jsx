@@ -4,10 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css'; // Importamos nuestro CSS personalizado
 import { useState } from 'react';
 import { login } from '../services/auth';
+import useToken from '../hooks/useToken';  
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const { token, addToken } = useToken();
     const navigate = useNavigate();
 
     return (
@@ -58,7 +60,10 @@ const Login = () => {
                         className="login-btn"
                         onClick={() => {
                             console.log(username, password);
-                            login(username, password).then(()=>navigate("/listado"));
+                            login(username, password)
+                            .then(addToken)
+                            .then(()=>navigate("/listado"));
+
                         }}
                     >
                         Login
