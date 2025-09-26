@@ -11,9 +11,7 @@ const ListadoEventos = () => {
   
 
   useEffect(() => {
-    getEvents().then(setEventos);
-    
-    ;
+    getEvents().then(setEventos);    
   }, []);
 
   // Crear nuevo evento
@@ -35,14 +33,14 @@ const ListadoEventos = () => {
       {/* GRID DE EVENTOS */}
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5 px-3">
         {eventos.length > 0 ? (
-          eventos.map((evento) => (
+          eventos?.map((evento) => (
             <div className="col d-flex" key={evento.id}>
               <div
                 className="eventCard" 
               >
-                <h2><Link to={"/eventos/"+evento.id}/>{evento.name}</h2>
-                <h3>{new Date(evento.date).toLocaleDateString()}</h3>
-                <h3>{evento.location}</h3>
+                <h2 className="text-white"><Link to={"/eventos/"+evento.id}>{evento.name}</Link></h2>
+                <h3 className="text-white">{new Date(evento.date).toLocaleDateString()}</h3>
+                <h3 className="text-white">{evento.location}</h3>
               </div>
             </div>
           ))

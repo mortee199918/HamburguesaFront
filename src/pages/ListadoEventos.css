@@ -45,7 +45,7 @@
   padding: 20px;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  height: 180px;
+  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -113,13 +113,18 @@
 
 .submit-btn {
   background-color: #E37807;
-  color: white; /* Opcional: para que el texto sea legible */
-  padding: 10px 20px; /* Ajusta según necesites */
+  color: white;
+  /* Opcional: para que el texto sea legible */
+  padding: 10px 20px;
+  /* Ajusta según necesites */
   border: none;
-  border-radius: 5px; /* Opcional: para bordes redondeados */
+  border-radius: 5px;
+  /* Opcional: para bordes redondeados */
   font-size: 16px;
-  cursor: pointer;/* Centrado horizontal con Flexbox */
-  margin: 0 auto; /* Esto centra el botón dentro de su contenedor */
+  cursor: pointer;
+  /* Centrado horizontal con Flexbox */
+  margin: 0 auto;
+  /* Esto centra el botón dentro de su contenedor */
 
   /* background-color: #E37807;
   color: yellow;
@@ -137,9 +142,12 @@
   background-color: #DB3C09;
 }
 
-.form-container { /* Cambia esto por el nombre real de tu contenedor */
+.form-container {
+  /* Cambia esto por el nombre real de tu contenedor */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra todos los elementos hijos horizontalmente */
-  gap: 15px; /* Espacio entre elementos */
+  align-items: center;
+  /* Centra todos los elementos hijos horizontalmente */
+  gap: 15px;
+  /* Espacio entre elementos */
 }
