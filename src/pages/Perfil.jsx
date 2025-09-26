@@ -1,26 +1,22 @@
 import { useEffect, useState } from "react";
-import {  getUserFromToken } from "../services/user";
+import { getUserFromToken } from "../services/user";
 import UserInfo from "./UserInfo";
 
 const Perfil = () => {
-      const [user,setUser]=useState();
-      const queryUser = ()=> getUserFromToken().then(setUser);
+  const [user, setUser] = useState();
+  const queryUser = () => getUserFromToken().then(setUser);
 
-      useEffect(()=>{
-        queryUser();
-      },[]);
+  useEffect(() => {
+    queryUser();
+  }, []);
 
-    return (
-      
-        <>
-        <h1 className="text-center text-white bg-success border-right">Perfil </h1>
-           { user && <UserInfo u={user} queryUser={queryUser} />}
-           
-        
-        
-           
-        </>
-    );
+  return (
+
+    <>
+      <h1 className="text-center text-white bg-success border-right">Perfil </h1>
+      {user && <UserInfo u={user} queryUser={queryUser} />}
+    </>
+  );
 };
 
 export default Perfil;
