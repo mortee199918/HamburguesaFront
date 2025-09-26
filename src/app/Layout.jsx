@@ -9,20 +9,22 @@ function Layout() {
       <header className="bg-blue-700 text-white p-4 flex justify-between items-center shadow">
         <div className="container-fluid row">
         <h1
-          className="text-xl font-bold cursor-pointer col-8"
-          onClick={() => navigate("/")}
+          className="text-xl font-bold cursor-pointer col-7"
+        
         >
-          🍽️ Mis Eventos
+          🍽️ Noche Hamburguesa 🍔
         </h1>
-        <button className="col-2 offset-2 btn btn-success" onClick={() => navigate("/perfil")}>Perfil</button>
+        <button className="col-2  btn btn-success m-2 " onClick={() => navigate("/perfil")}>Perfil</button>
+        <button className="col-2  btn btn-success m-2"> LOG OUT </button>
         </div>
 
         <button
           onClick={() => navigate("/listado")}
-          className="bg-gray-200 text-black px-3 py-1 rounded hover:bg-gray-300  btn btn-info"
+          className="bg-gray-200 text-white px-3 py-1 rounded hover:bg-gray-300  btn btn-success"
         >
           ⬅ Volver al listado
         </button>
+      
       </header>
 
       {/* CONTENIDO */}

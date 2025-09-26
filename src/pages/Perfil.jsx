@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserFromToken } from "../services/user";
 import UserInfo from "./UserInfo";
+import "./ListadoEventos.css";
 
 const Perfil = () => {
   const [user, setUser] = useState();
@@ -13,7 +14,12 @@ const Perfil = () => {
   return (
 
     <>
-      <h1 className="text-center text-white bg-success border-right">Perfil </h1>
+    <div className="text-center">
+      <h1 className="title-box">
+        {/* <i className="bi bi-person-circle me-2 text-center"></i> */}
+        Perfil 
+      </h1>
+    </div>
       {user && <UserInfo u={user} queryUser={queryUser} />}
     </>
   );

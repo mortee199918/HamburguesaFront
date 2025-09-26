@@ -21,16 +21,16 @@ const ListadoEventos = () => {
   };
 
   return (
-    <div className="container"> {/* 👈 NO "styles.container" */}
+    <div className="container"> 
 
       <div className="text-center">
-        <h1 className="title-box">📅 Listado de Eventos</h1> {/* 👈 NO "styles.title-box" */}
+        <h1 className="title-box">📅 Listado de Eventos</h1>
         <p className="subtitle">Haz clic en cualquier evento para ver sus detalles</p>
       </div>
 
       <div className="divider-yellow"></div>
 
-      {/* GRID DE EVENTOS */}
+     
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5 px-3">
         {eventos.length > 0 ? (
           eventos?.map((evento) => (
@@ -56,11 +56,12 @@ const ListadoEventos = () => {
 
       <div className="divider-brown"></div>
 
-      <div className="formBox"> {/* 👈 NO "styles.formBox" */}
-        <h2 className="text-center fw-bold">
-          <i className="bi bi-plus-circle me-2"></i>
-          Crear Nuevo Evento
-        </h2>
+      <div className="text-center"> 
+        <h2 className="title-box">
+        <i className="bi bi-plus-circle me-2"></i>
+        Crear Nuevo Evento
+      </h2>
+       <br/>
         <form className="form-container" onSubmit={handleSubmit}>
           <div className="formGroupGreen">
             <input
