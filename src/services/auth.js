@@ -1,5 +1,7 @@
-import { setToken } from '../providers/TokenProvider.js';
 import api from './api.js';
+import { getToken } from '../providers/TokenProvider.js';
+
+
 export const login = async (username, password) => {
     console.log(username, password)
     const token = btoa(username + ":" + password);
@@ -13,17 +15,18 @@ export const login = async (username, password) => {
     console.log(response);
     
     if(response.status === 200){
-        await setToken(response.data);
-        // alert("Login exitoso!!")
+       return response.data;
+    
     }else{
        return Promise.reject("invalid auth");
     }
 };
 
 
-export const setAuth = (token) => {
-    api.defaults.headers.common.Authorization = `Bearer ${token}`;
+export const setAuth = () => {
+    api.defaults.headers.common.Authorization = `Bearer ${getToken()}`;
 };
+
 
 export const test = () => {
 	api.get("/users");
@@ -35,4 +38,13 @@ export const register = async (username,password) =>{
     alert("Registro completo")
    }
 }
+export const unsetToken = () => {
+    api.defaults.headers.common.Authorization = null;
+    deleteToken();
+};
+export const validateToken = async () => {
+   
+    const res = await api.get("/auth/validate");
+    return res.data;
+};
 

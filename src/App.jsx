@@ -1,25 +1,26 @@
 import Router from "./app/Router";
 import "./pages/App.css";
-import { getToken } from "./providers/TokenProvider";
-import { setAuth } from "./services/auth";
+import { validateToken } from "./services/auth";
 import { useEffect, useState } from "react";
+import useToken from "./hooks/useToken";
+import { setAuth } from "./services/auth";
 
 
 
 
 const App = () => {
+  const { token } = useToken();
   const [authenticated, setAuthenticated] = useState(false);
-  const token = getToken();
-  useEffect(()=>
-  {if (token){
-    setAuth(token)
-    setAuthenticated(true);
-  }}, [])
+  useEffect(()=>{
+    if (token && validateToken()) {
+      setAuthenticated(true);
+      setAuth();
+    }}
+    , [token]);
 
   return (
     <>
-
-      <Router auth={authenticated}/>
+      <Router auth={authenticated} />
     </>
   )
 }
