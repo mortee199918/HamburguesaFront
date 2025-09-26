@@ -3,11 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import './DetalleEvento.css';
 import { getEventById, updateEvent, deleteEvent } from "../services/event";
 import { addAssistantToEvent } from "../services/userEvent";
+import UserEvents from "./UserEvents";
 
 const DetalleEvento = () => {
   const { id } = useParams();
   const [evento, setEvento] = useState(null);
-  const [editando, setEditando] = useState(false); // 👈 Modo edición
+  const [editando, setEditando] = useState(false); 
   const [formData, setFormData] = useState({ name: '', location: '', date: '' });
   const navigate = useNavigate();
 
@@ -15,7 +16,7 @@ const DetalleEvento = () => {
     getEventById(id)
       .then(data => {
         setEvento(data);
-        // Inicializar formData con los datos actuales
+      
         if (data) {
           setFormData({
             name: data.name || '',
@@ -37,7 +38,7 @@ const DetalleEvento = () => {
     );
   }
 
-  // ✅ Guardar cambios (Editar)
+
   const handleSave = async () => {
     try {
       const eventoActualizado = await updateEvent({
@@ -53,7 +54,7 @@ const DetalleEvento = () => {
     }
   };
 
-  // ✅ Cancelar edición
+  
   const handleCancel = () => {
     setEditando(false);
     setFormData({
@@ -63,13 +64,12 @@ const DetalleEvento = () => {
     });
   };
 
-  // ✅ Eliminar evento
   const handleDelete = async () => {
     if (window.confirm("¿Seguro que deseas eliminar este evento?")) {
       try {
         await deleteEvent(evento.id);
         alert("Evento eliminado correctamente");
-        navigate('/listado'); // Redirigir al listado
+        navigate('/listado');
       } catch (err) {
         console.error("Error al eliminar evento:", err);
         alert("No se pudo eliminar el evento");
@@ -87,34 +87,33 @@ const DetalleEvento = () => {
 
       <div className="divider-yellow"></div>
 
-      {/* Tarjeta del evento */}
-      <div className="event-card">
+    
+      <div className="event-card" style={{ height:"250px"}}>
         {editando ? (
-          // ✏️ Modo edición
           <div className="edit-form">
-            <div className="mb-3">
-              <label className="form-label">Nombre</label>
+            <div className="row">
+              <label className="form-label col-2">Nombre</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control col-6"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
             </div>
-            <div className="mb-3">
-              <label className="form-label">Lugar</label>
+            <div className="row">
+              <label className="form-label col-2">Lugar</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control col-6"
                 value={formData.location}
                 onChange={(e) => setFormData({ ...formData, location: e.target.value })}
               />
             </div>
-            <div className="mb-3">
-              <label className="form-label">Fecha</label>
+            <div className="row">
+              <label className="form-label col-2">Fecha</label>
               <input
                 type="date"
-                className="form-control"
+                className="form-control col-6"
                 value={formData.date}
                 onChange={(e) => setFormData({ ...formData, date: e.target.value })}
               />
@@ -129,7 +128,6 @@ const DetalleEvento = () => {
             </div>
           </div>
         ) : (
-          // 👁️ Modo lectura
           <>
             <h2 className="event-title">{evento.name}</h2>
             <p className="event-info">
@@ -149,22 +147,17 @@ const DetalleEvento = () => {
       </div>
 
       <div className="divider-brown"></div>
-
-      {/* Sección de participantes */}
       <div className="participants-section">
         <h3>👥 Participantes</h3>
         {evento.assistants ? (
-          evento.assistants.map((assistant, index) => (
-            <div key={index} className="participant-item">
-              {assistant.user?.username || `Participante ${index + 1}`}
-            </div>
+          evento.assistants.map((assistant) => (
+           <UserEvents assistantIn={assistant}/>
+             
           ))
         ) : (
           <p className="no-participants">Aún no hay participantes registrados.</p>
         )}
       </div>
-
-      {/* Botones de acción */}
       <div className="btn-group">
         {!editando && (
           <>
@@ -190,8 +183,6 @@ const DetalleEvento = () => {
           </>
         )}
       </div>
-
-      {/* Botón de regreso */}
       <div className="text-center">
         <button
           className="back-link"

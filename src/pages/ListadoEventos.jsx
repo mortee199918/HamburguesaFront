@@ -14,7 +14,7 @@ const ListadoEventos = () => {
     getEvents().then(setEventos);    
   }, []);
 
-  // Crear nuevo evento
+  
   const handleSubmit = () => {
     createEvent({name: nombre, location: lugar, date: fecha })
    
@@ -46,7 +46,7 @@ const ListadoEventos = () => {
           ))
         ) : (
           <div className="col-12">
-            <div className="noEventsAlert" role="alert"> {/* 👈 NO "styles.noEventsAlert" */}
+            <div className="noEventsAlert" role="alert"> 
               <i className="bi bi-info-circle me-2"></i>
               No hay eventos creados aún. ¡Crea el primero!
             </div>
@@ -62,7 +62,7 @@ const ListadoEventos = () => {
         Crear Nuevo Evento
       </h2>
        <br/>
-        <form className="form-container" onSubmit={handleSubmit}>
+        <form className="form-container">
           <div className="formGroupGreen">
             <input
               type="text"
@@ -97,7 +97,7 @@ const ListadoEventos = () => {
 
           <button
             type="submit"
-            className="submit-btn" // 👈 NO "styles.submitBtn"
+            className="submit-btn" 
             onClick={()=>handleSubmit()}  
           >
             <i className="bi bi-save me-2"></i>

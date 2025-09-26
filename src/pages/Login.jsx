@@ -15,18 +15,11 @@ const Login = () => {
     return (
         <div className="container-fluid d-flex justify-content-center align-items-center login-container">
             <div className="login-card">
-                {/* Título */}
                 <h1 className="title-bar">
                     Bienvenido a la noche de hamburguesas porfavor registrate
                 </h1>
-
-                {/* Espaciador amarillo */}
                 <div className="spacer-yellow"></div>
-
-                {/* Espaciador rojo oscuro */}
                 <div className="spacer-red"></div>
-
-                {/* Input username */}
                 <div className="input-wrapper limegreen">
                     <input
                         type="text"
@@ -36,8 +29,6 @@ const Login = () => {
                         value={username}
                     />
                 </div>
-
-                {/* Espaciador marrón oscuro */}
                 <div className="spacer-brown"></div>
 
                 {/* Input password */}

@@ -4,7 +4,6 @@ import { updateUser } from "../services/user";
 const UserInfo = ({u,queryUser}) => {
     const [user,setUser]=useState(u);
     const [editable,setEditable]=useState(false);
-    console.log(editable);
     
         
        return editable ? (

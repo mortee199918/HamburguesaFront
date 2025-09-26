@@ -12,7 +12,7 @@ export const createEvent = async (event) => {
 
 export const getEventById = async (id) => {
     const res = await api.get("/event/" + id);
-    console.log(res.data);
+
     
     return res.data;
 }

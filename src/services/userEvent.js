@@ -7,3 +7,8 @@ export const addAssistantToEvent = async (evento) => {
    
    return response.data;
 }
+export const updateAssistant = async (userEvent) =>{
+   const response = await api.put("/userEvent/assistants", userEvent);
+   
+   return response.data;
+}
